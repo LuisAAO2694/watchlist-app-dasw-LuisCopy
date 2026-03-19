@@ -1,0 +1,27 @@
+{
+  "name": "watchlist-app",
+  "version": "1.0.0",
+  "description": "**Lista de Películas y Series Favoritas**  \r **Desarrollo Web con Node.js**",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "",
+    "dev": "nodemon --inspect ./app.js"
+  },
+  "nodemonConfig": {
+    "ignore": ["**/test/**", "**/docs/**"],
+    "delay": 1500
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
