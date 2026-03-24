@@ -1,5 +1,3 @@
-
-import { CookieJar } from "jsdom";
 import jsonDb from "../db/jsonDb.js";
 
 class UsuarioRepository {
@@ -8,8 +6,9 @@ class UsuarioRepository {
     }
 
     obtenerPorEmail = async (email = '') => {
-        const usuarios = await jsonDb.leer(this._coleccion);
-        return usuarios.filter(u => u.email === email.toLocaleLowerCase()) ?? null;
+        const usuarios = await jsonDb.leer(this._coleccion) ?? [];
+        console.log(usuarios);
+        return usuarios.find(u => u.email === email.toLowerCase()) ?? null;
     }
 
     guardar = async (usuario) => {

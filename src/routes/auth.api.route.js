@@ -6,7 +6,7 @@
  */
 import { request, response, Router } from 'express';
 
-import { registro } from "../controllers/auth.controller.js";
+import { ingresar, registro } from "../controllers/auth.controller.js";
 
 // Inicializamos el enrutador
 const router = Router();
@@ -24,9 +24,7 @@ router.post('/registro', registro);
  * 3. RUTA DE INGRESO / LOGIN (POST)
  * También usamos POST para proteger las credenciales en el cuerpo de la petición.
  */
-router.post('/ingresar', (req, res) => {
-    // Pendiente: Lógica de validación de credenciales y generación de Token (JWT).
-});
+router.post('/ingresar', ingresar);
 
 /**
  * 4. EXPORTACIÓN
