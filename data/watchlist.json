@@ -1,54 +1,15 @@
 [
   {
-    "id": 1742747723001,
-    "userId": 1774367204499,
-    "titulo": "Inception",
-    "tipo": "movie",
-    "genero": "Sci-Fi",
-    "rating": 9.5,
-    "estado": "visto",
-    "coverUrl": "https://example.com/covers/inception.jpg",
-    "notas": "Obra maestra, ver de nuevo para entender el final.",
-    "createdAt": "2026-03-23T10:40:00.000Z",
-    "updatedAt": "2026-03-23T10:40:00.000Z"
-  },
-  {
-    "id": 1742747723002,
-    "userId": 1774367204499,
-    "titulo": "The Bear",
-    "tipo": "serie",
-    "genero": "Drama",
-    "rating": null,
-    "estado": "",
-    "coverUrl": "https://example.com/covers/the-bear.png",
-    "notas": "Me estresa pero es excelente.",
-    "createdAt": "2026-03-23T10:45:15.000Z",
-    "updatedAt": "2026-03-23T11:00:00.000Z"
-  },
-  {
-    "id": 1742747723003,
-    "userId": 1774367204499,
-    "titulo": "Succession",
-    "tipo": "serie",
-    "genero": "Drama / Comedy",
-    "rating": null,
-    "estado": "mirando",
-    "coverUrl": "",
-    "notas": "Recomendada por Lucas.",
-    "createdAt": "2026-03-23T10:50:00.000Z",
-    "updatedAt": "2026-03-23T10:50:00.000Z"
-  },
-  {
-    "id": 1742747723004,
-    "userId": 1774367204499,
-    "titulo": "Blade Runner 2049",
-    "tipo": "movie",
-    "genero": "Cyberpunk",
-    "rating": 8.0,
-    "estado": "visto",
-    "coverUrl": "https://example.com/covers/br2049.jpg",
-    "notas": "",
-    "createdAt": "2026-03-23T11:10:22.000Z",
-    "updatedAt": "2026-03-23T11:10:22.000Z"
+    "id": 1774629703289,
+    "userId": 1774545626897,
+    "titulo": "Matrix",
+    "tipo": "pelicula",
+    "genero": "Ciencia ficcion",
+    "rating": 9,
+    "estado": "pendiente",
+    "coverUrl": "https://example.com/matrix.jpg",
+    "notas": "Clasico imperdible",
+    "createdAt": "2026-03-27T16:41:43.289Z",
+    "updatedAt": "2026-03-27T16:41:43.290Z"
   }
 ]

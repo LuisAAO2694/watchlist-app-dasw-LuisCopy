@@ -11,8 +11,10 @@ import watchlistService from "../services/watchlist.service.js";
  */
 const obtenerTodos = async (req = request, res = response) => {
     try {
-        const userId = req.headers['x-token'];
+        const { userId } = req.user;
+
         const filtros = req.query;
+
         const items = await watchlistService.obtenerTodos(userId, filtros);
         res.status(200).json({ count: items.length, data: items });
     } catch (error) {
@@ -55,7 +57,8 @@ const obtenerUno = async (req = request, res = response) => {
  */
 const crear = async (req = request, res = response) => {
     try {
-        const userId = req.headers['x-token'];
+        const { userId } = req.user;
+
         const data = req.body;
         const item = await watchlistService.crear(userId, data);
         res.status(201).json({ message: 'Título agregado a la watchlist.', data: item });
@@ -77,7 +80,7 @@ const crear = async (req = request, res = response) => {
  */
 const actualizar = async (req = request, res = response) => {
     try {
-        const userId = req.headers['x-token'];
+        const { userId } = req.user;
         const { id } = req.params;
         const cambios = req.body;
         const item = await watchlistService.actualizar(id, userId, cambios);
@@ -100,7 +103,7 @@ const actualizar = async (req = request, res = response) => {
  */
 const eliminar = async (req = request, res = response) => {
     try {
-        const userId = req.headers['x-token'];
+        const { userId } = req.user;;
         const { id } = req.params;
         await watchlistService.eliminar(id, userId);
         res.status(200).json({ message: 'Título eliminado correctamente.' });

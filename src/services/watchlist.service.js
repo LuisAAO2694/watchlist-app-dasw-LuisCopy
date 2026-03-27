@@ -40,12 +40,15 @@ class WatchlistService {
     /**
      * Crea un nuevo ítem en el watchlist del usuario.
      * @async
-     * @param {string} userId - ID del usuario.
+     * @param {number} userId - ID del usuario.
      * @param {Object} data - Datos del nuevo ítem.
      * @returns {Promise<Object>} Promesa que resuelve con el ítem creado.
      */
     crear = async (userId, data) => {
+
         const newItem = crearWatchlistItem({ userId, ...data });
+        console.log(typeof newItem.id);
+
         return watchlistRepository.guardar(newItem);
     };
 
@@ -59,6 +62,8 @@ class WatchlistService {
      * @throws {Error} Error con status 404 si el ítem no se encuentra.
      */
     actualizar = async (id, userId, cambios) => {
+        console.log(`Id pelicula:${id}| userID: ${userId} `);
+
         const itemActualizado = await watchlistRepository.actualizar(id, userId, cambios);
         if (!itemActualizado) {
             const error = new Error("Título no encontrado.");
