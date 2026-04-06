@@ -3,9 +3,9 @@
  * Gracias a "type": "module" en el package.json, usamos la sintaxis moderna 'import'.
  */
 import express from "express"; // El framework para construir el servidor web.
-import { router } from "./src/routes/index.api.route.js"; // Importamos nuestro gestor de rutas.
+import { router as apiRouter } from "./src/routes/index.api.route.js"; // Importamos nuestro gestor de rutas.
+import { router as viewRouter } from "./src/routes/index.routes.js";
 import { logMiddleware } from "./src/middlewares/log.middleware.js";
-import { validarToken } from "./src/middlewares/auth.middleware.js";
 
 /**
  * 2. INSTANCIACIÓN Y MIDDLEWARES (Configuración)
@@ -31,8 +31,8 @@ app.use(logMiddleware);
 
 // Prefijamos todas las rutas que vienen del archivo index.api.route con '/api'
 // Ejemplo: si en el router hay una ruta '/movies', aquí será '/api/movies'
-app.use('/api', router);
-
+app.use('/api', apiRouter);
+app.use('/', viewRouter);
 /**
  * RUTA RAÍZ: 
  * Es la respuesta que damos cuando alguien entra a la URL base (http://localhost:8080/).
