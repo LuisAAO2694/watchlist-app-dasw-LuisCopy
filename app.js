@@ -17,10 +17,10 @@ const app = express();
  * Permite que Express entienda el cuerpo (body) de las peticiones que vienen como JSON.
  * Sin esto, req.body sería 'undefined'.
  */
-app.use(express.static('public'));
-
-
 app.use(express.json());
+
+// Habilita el acceso público a archivos estáticos (CSS, JS, imágenes) desde la carpeta 'public'
+app.use(express.static('public'));
 
 // Middleware para logg
 app.use(logMiddleware);
