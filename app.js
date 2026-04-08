@@ -3,6 +3,7 @@
  * Gracias a "type": "module" en el package.json, usamos la sintaxis moderna 'import'.
  */
 import express from "express"; // El framework para construir el servidor web.
+import cors from "cors";
 import { router as apiRouter } from "./src/routes/index.api.route.js"; // Importamos nuestro gestor de rutas.
 import { router as viewRouter } from "./src/routes/index.routes.js";
 import { logMiddleware } from "./src/middlewares/log.middleware.js";
@@ -11,6 +12,9 @@ import { logMiddleware } from "./src/middlewares/log.middleware.js";
  * 2. INSTANCIACIÓN Y MIDDLEWARES (Configuración)
  */
 const app = express();
+
+
+app.use(cors());
 
 /**
  * MIDDLEWARE PARA JSON: 
