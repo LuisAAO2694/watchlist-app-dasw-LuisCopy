@@ -1,4 +1,5 @@
 import watchlistService from "../services/watchlist.service.js";
+import viewLoader from "../utils/view.loader.js";
 
 
 /**
@@ -115,4 +116,8 @@ const eliminar = async (req = request, res = response) => {
     }
 };
 
-export { obtenerTodos, obtenerUno, crear, actualizar, eliminar };
+const mostrarHome = async (req = request, res = response) => {
+    res.sendFile(await viewLoader.cargar('dashboard'));
+};
+
+export { obtenerTodos, obtenerUno, crear, actualizar, eliminar, mostrarHome };

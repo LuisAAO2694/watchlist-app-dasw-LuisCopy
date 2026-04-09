@@ -1,6 +1,7 @@
 
 import { request, response } from "express";
 import authService from "../services/auth.service.js";
+import viewLoader from "../utils/view.loader.js";
 
 
 
@@ -48,8 +49,14 @@ const ingresar = async (req = request, res = response) => {
 }
 
 
+const mostrarLogin = async (req = request, res = response) => {
+    res.sendFile(await viewLoader.cargar('index'));
+};
+
+
 
 export {
     registro,
-    ingresar
+    ingresar,
+    mostrarLogin
 }
