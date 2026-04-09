@@ -96,7 +96,7 @@ const watchlist = [
         titulo: "The Bear",
         tipo: "serie",
         genero: "Drama",
-        rating: null,
+        rating: 7.3,
         estado: "",
         coverUrl: "https://example.com/covers/the-bear.png",
         notas: "Me estresa pero es excelente.",
@@ -109,7 +109,7 @@ const watchlist = [
         titulo: "Succession",
         tipo: "serie",
         genero: "Drama / Comedy",
-        rating: null,
+        rating: 8.9,
         estado: "mirando",
         coverUrl: "",
         notes: "Recomendada por Lucas.",
@@ -130,3 +130,114 @@ const watchlist = [
         updatedAt: "2026-03-23T11:10:22.000Z"
     }
 ];
+
+
+const obtenerData = () => {
+    return watchlist;
+}
+
+
+const obtenerEstrellas = (rating10) => {
+    const rating5 = rating10 / 2;
+
+    const completas = Math.floor(rating5);
+
+    const decimal = rating5 - completas;
+
+    let medias = 0;
+    let finales = completas;
+
+    if (decimal >= .75) {
+        finales += 1;
+    }
+    else if (decimal >= .25)
+        medias = 1;
+
+    return {
+        completas: finales,
+        medias: medias,
+        rating: rating5
+    }
+}
+
+const crearTarjeta = ({ id, userId, titulo,
+    tipo,
+    genero,
+    rating,
+    estado,
+    coverUrl,
+    notas,
+    createdAt,
+    updatedAt }) => {
+
+    const tarjeta = document.createElement('div');
+
+    tarjeta.classList.add('watchlist-card');
+
+    tarjeta.setAttribute('data-id', id);
+
+    const { completas, medias, rating: rating5 } = obtenerEstrellas(rating);
+
+
+    let estrellas = '';
+    for (let i = 0; i < completas; i++)
+        estrellas += '<i class="bi bi-star-fill"></i>';
+
+    for (let i = 0; i < medias; i++)
+        estrellas += '<i class="bi bi-star-half"></i>';
+
+    tarjeta.innerHTML = `
+    <div class="card-poster">
+              <i class="bi bi-tv"></i>
+              <div class="card-overlay">
+                <div class="card-title">${titulo}</div>
+                <div class="card-meta">2008-2013</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-badges">
+                <span class="badge-custom badge-series">${tipo}</span>
+                <span class="badge-custom badge-watched">${estado}</span>
+              </div>
+              <div class="card-rating">
+                ${estrellas}
+                <span>${rating5}</span>
+              </div>
+              <div class="card-genre">${genero}</div>
+            </div>`;
+
+    /**
+ * EJERCICIO: Implementación de Navegación Dinámica
+ * * Instrucciones para los alumnos:
+ * * 1. Definir el Listener: Escuchamos el evento 'click' sobre el elemento 'tarjeta'.
+ * Usamos una arrow function para capturar el objeto 'event'.
+ * * 2. Identificar el Contenedor: Usamos 'event.currentTarget' para asegurar que 
+ * obtenemos la referencia al elemento que posee el evento (la tarjeta), 
+ * incluso si se hace click en un elemento hijo (imagen, texto, etc.).
+ * * 3. Extraer Datos: Accedemos a la propiedad 'dataset.id'. Esto leerá el 
+ * valor del atributo HTML 'data-id' definido en el marcado.
+ * * 4. Control de Flujo: Validamos que el ID exista antes de intentar la 
+ * redirección para evitar errores de navegación.
+ * * 5. Redirección: Utilizamos el objeto 'window.location' para cambiar la URL 
+ * actual por el ID obtenido, usando Template Literals.
+ */
+    return tarjeta;
+}
+
+const renderizarContenido = () => {
+    const contenedorTarjetas = document.querySelector('.watchlist-grid');
+
+    const tarjetasData = obtenerData();
+
+    tarjetasData.forEach(t => {
+        contenedorTarjetas.appendChild(crearTarjeta(t));
+    })
+}
+
+const inicializarGrid = () => {
+    renderizarContenido();
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    inicializarGrid();
+});
