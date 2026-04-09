@@ -52,14 +52,20 @@ const fase2 = () => {
 
   // Ejemplo 1
   console.log('--- EJEMPLO 1: Buscar el título ---');
-
+  const titulo = document.querySelector('.content-title');
+  titulo.textContent = 'Mi watchlist modificado'
+  console.log(titulo);
 
   // Ejemplo 2
   console.log('\n--- EJEMPLO 2: Buscar todos los cards ---');
-
+  const tarjetas = document.querySelectorAll('.watchlist-card');
+  console.log(tarjetas);
   // Ejemplo 3: Mostrar los títulos
   console.log('\n--- EJEMPLO 3: Mostrar los títulos ---');
-
+  tarjetas.forEach((card, i) => {
+    const nombre = card.querySelector('.card-title');
+    console.log(nombre);
+  });
 }
 
 // ================================================================
@@ -73,16 +79,19 @@ const fase3 = () => {
   console.log('╚════════════════════════════════════════╝\n');
 
   console.log('Puedes cambiar el texto, colores, estilos, etc.\n');
-
+  const titulo = document.querySelector('.content-title');
   // Cambiar texto
   console.log('--- CAMBIAR TEXTO ---');
 
+  titulo.textContent = "☕ Mis peliculas/Series favoritas";
 
   // Cambiar color
   console.log('--- CAMBIAR COLOR ---');
-
+  titulo.style.color = 'red';
   // Cambiar tamaño
   console.log('--- CAMBIAR TAMAÑO ---');
+  titulo.style.fontSize = '2rem';
+
 }
 
 // ================================================================
@@ -98,13 +107,43 @@ const fase4 = () => {
   console.log('Puedes crear elementos nuevos desde cero.\n');
 
   console.log('--- PASO 1: Crear un elemento ---');
-
-
+  const nuevaTarjeta = document.createElement('div');
+  
   console.log('\n--- PASO 2: Agregarle clase ---');
-
+  nuevaTarjeta.classList.add('watchlist-card');
+  
   console.log('\n--- PASO 3: Agregarle contenido ---');
+  nuevaTarjeta.setAttribute('data-id', 'Scream');
+  
+  nuevaTarjeta.innerHTML = `
+  <div class="card-poster">
+              <i class="bi bi-film"></i>
+              <div class="card-overlay">
+                <div class="card-title">Scream</div>
+                <div class="card-meta">2002</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-badges">
+                <span class="badge-custom badge-movie">Película</span>
+                <span class="badge-custom badge-watched">Visto</span>
+              </div>
+              <div class="card-rating">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <span>4.0</span>
+              </div>
+              <div class="card-genre">Terror</div>
+            </div>`;
 
+  
+  const gridContainer = document.querySelector('.watchlist-grid');
+  const referencia = document.querySelector('.watchlist-card');
+  referencia.before(nuevaTarjeta);
 
+  console.log(nuevaTarjeta);
 }
 
 // ================================================================
