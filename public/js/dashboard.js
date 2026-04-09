@@ -221,6 +221,24 @@ const crearTarjeta = ({ id, userId, titulo,
  * * 5. Redirección: Utilizamos el objeto 'window.location' para cambiar la URL 
  * actual por el ID obtenido, usando Template Literals.
  */
+
+    tarjeta.addEventListener('click', (event) => {
+
+        // 2. Obtener la tarjeta que recibió el evento
+        const tarjetaActual = event.currentTarget;
+
+        // 3. Obtener el id desde el atributo data-id
+        const id = tarjetaActual.dataset.id;
+
+        // 4. Validar que exista el id
+        if (id) {
+
+            // 5. Redireccionar usando el id
+            window.location.href = `watchlist/${id}`;
+
+        }
+
+    });
     return tarjeta;
 }
 
