@@ -13,6 +13,7 @@ import { logMiddleware } from "./src/middlewares/log.middleware.js";
  */
 const app = express();
 
+app.set('view engine', 'ejs');
 
 app.use(cors());
 

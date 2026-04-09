@@ -6,7 +6,7 @@ import { mostrarHome } from "../controllers/watchlist.controller.js";
 
 const router = Router();
 
-router.get('/home', mostrarHome);
+router.get('/', mostrarHome);
 
 
 export {
