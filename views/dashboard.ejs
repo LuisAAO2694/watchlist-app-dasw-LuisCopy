@@ -20,135 +20,11 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-dark navbar-expand-md">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <i class="bi bi-play-circle-fill"></i>
-          Watchlist
-        </a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarContent"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarContent">
-          <div class="d-md-flex align-items-center gap-3 ms-auto">
-            <div class="input-group d-none d-md-flex" style="width: auto">
-              <span
-                class="input-group-text"
-                style="
-                  background: transparent;
-                  border: 1px solid rgba(255, 255, 255, 0.1);
-                  color: #fff;
-                "
-              >
-                <i class="bi bi-search"></i>
-              </span>
-              <input
-                type="text"
-                class="form-control search-box"
-                placeholder="Buscar títulos..."
-                style="border-left: 0"
-              />
-            </div>
-
-            <div class="dropdown ms-3">
-              <button
-                class="user-avatar dropdown-toggle"
-                type="button"
-                data-bs-toggle="dropdown"
-              >
-                JD
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                  <a class="dropdown-item" href="#">
-                    <i class="bi bi-person"></i> Mi perfil
-                  </a>
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item text-danger" href="#">
-                    <i class="bi bi-box-arrow-right"></i> Cerrar sesión
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-
+    <%- include('navbar'); -%>
     <!-- Main Layout -->
     <div class="main-container">
       <!-- Sidebar -->
-      <aside class="sidebar d-none d-lg-block">
-        <button
-          class="btn btn-danger btn-add-sidebar d-block"
-          data-bs-toggle="modal"
-          data-bs-target="#addModal"
-        >
-          <i class="bi bi-plus-lg"></i>
-          Agregar título
-        </button>
-
-        <div class="filter-group" id="filtro-categoria">
-          <div class="sidebar-title">Mi Lista</div>
-          <a href="" class="filter-option active" data-categoria="todos">
-            <i class="bi bi-collection-play"></i>
-            Todos
-          </a>
-          <a href="" class="filter-option" data-categoria="movie">
-            <i class="bi bi-film"></i>
-            Películas
-          </a>
-          <a href="" class="filter-option" data-categoria="serie">
-            <i class="bi bi-tv"></i>
-            Series
-          </a>
-        </div>
-
-        <div class="filter-group" id="filtro-estado">
-          <div class="sidebar-title">Estado</div>
-          <a href="" class="filter-option">
-            <i class="bi bi-clock"></i>
-            Pendiente
-          </a>
-          <a href="" class="filter-option">
-            <i class="bi bi-play-circle"></i>
-            Viendo
-          </a>
-          <a href="" class="filter-option">
-            <i class="bi bi-check-circle"></i>
-            Visto
-          </a>
-        </div>
-
-        <div class="filter-group" id="filtro-genero">
-          <div class="sidebar-title">Géneros</div>
-          <a href="" class="filter-option">
-            <i class="bi bi-tag"></i>
-            Acción
-          </a>
-          <a href="" class="filter-option">
-            <i class="bi bi-tag"></i>
-            Drama
-          </a>
-          <a href="" class="filter-option">
-            <i class="bi bi-tag"></i>
-            Comedia
-          </a>
-          <a href="" class="filter-option">
-            <i class="bi bi-tag"></i>
-            Terror
-          </a>
-        </div>
-      </aside>
+      <%- include('aside'); -%>
 
       <!-- Main Content -->
       <main class="content-area">
@@ -186,8 +62,7 @@
         </div>
 
         <!-- Watchlist Grid -->
-        <div class="watchlist-grid">
-        </div>
+        <div class="watchlist-grid"></div>
 
         <!-- Pagination -->
         <nav class="d-flex justify-content-center mt-4" aria-label="Paginación">

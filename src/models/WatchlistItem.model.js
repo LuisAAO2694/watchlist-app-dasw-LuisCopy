@@ -1,12 +1,12 @@
-
 /**
  * @typedef {Object} WatchlistItemData
  * @property {number} userId - ID del usuario propietario del item.
  * @property {string} titulo - Título del elemento (película, serie, etc.).
  * @property {string} tipo - Tipo de contenido ('pelicula', 'serie', 'libro', etc.).
  * @property {string} [genero=''] - Género del contenido.
+ * @property {Date} [fecha] - Fecha de estreno.
  * @property {number|null} [rating=null] - Puntuación del 1 al 10.
- * @property {string} [estado='pendiente'] - Estado del item ('pendiente', 'en_progreso', 'completado').
+ * @property {string} [estado='pendiente'] - Estado del item ('pendiente', 'visto', 'viendo').
  * @property {string} [coverUrl=''] - URL de la imagen de portada.
  * @property {string} [notas=''] - Notas personales del usuario.
  */
@@ -27,6 +27,7 @@
  * @returns {string} return.notas - Notas del usuario.
  * @returns {string} return.createdAt - Fecha de creación en formato ISO.
  * @returns {string} return.updatedAt - Fecha de última actualización en formato ISO.
+ * @returns {string} return.fecha - Fecha de estreno de peliucla/serie.
  */
 const crearWatchlistItem = ({
     userId,
@@ -34,9 +35,10 @@ const crearWatchlistItem = ({
     tipo,
     genero = '',
     rating = null,
+    fecha,
     estado = 'pendiente',
     coverUrl = '',
-    notas = ''
+    notas = '',
 }) => {
     return {
         id: Date.now(),
@@ -48,6 +50,7 @@ const crearWatchlistItem = ({
         estado,
         coverUrl,
         notas,
+        fecha,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()
     };

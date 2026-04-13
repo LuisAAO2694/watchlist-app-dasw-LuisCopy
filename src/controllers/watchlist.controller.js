@@ -117,7 +117,7 @@ const eliminar = async (req = request, res = response) => {
 };
 
 const mostrarHome = async (req = request, res = response) => {
-    res.sendFile(await viewLoader.cargar('dashboard'));
+    res.render('dashboard');
 };
 
 export { obtenerTodos, obtenerUno, crear, actualizar, eliminar, mostrarHome };
