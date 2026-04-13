@@ -60,6 +60,7 @@ app.use((req, res) => {
 
     if (!rutaSolicitada.includes('/api')) {
         res.redirect('/auth')
+        return;
     }
 
     res.status(404).json({ mensaje: 'Ruta no encontrada' })
