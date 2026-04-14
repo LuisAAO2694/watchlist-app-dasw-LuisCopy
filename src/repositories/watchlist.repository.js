@@ -25,7 +25,7 @@ class WatchlistRepository {
      * @param {string} [filtros.tipo] - Filtrar por tipo de item.
      * @returns {Promise<Array>} Array de items que coinciden con los criterios.
      */
-    obtenerTodosPorUsuario = async (userId, { estado, tipo }) => {
+    obtenerTodosPorUsuario = async (userId, { estado, tipo, categoria }) => {
         const datos = await jsonDb.leer(this._COLECCION);
 
         return datos.filter(item => {

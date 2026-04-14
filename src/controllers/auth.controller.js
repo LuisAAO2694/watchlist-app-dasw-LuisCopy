@@ -50,7 +50,7 @@ const ingresar = async (req = request, res = response) => {
 
 
 const mostrarLogin = async (req = request, res = response) => {
-    res.sendFile(await viewLoader.cargar('index'));
+    res.render('index');
 };
 
 

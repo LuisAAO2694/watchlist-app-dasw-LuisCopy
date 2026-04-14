@@ -56,7 +56,15 @@ app.get('/', (req, res) => {
  * 'app.use' sin ruta específica captura TODO lo que no fue atrapado arriba.
  */
 app.use((req, res) => {
-    res.status(404).json({ mensaje: 'Ruta no encontrada' });
+    const rutaSolicitada = req.url;
+
+    if (!rutaSolicitada.includes('/api')) {
+        res.redirect('/auth')
+        return;
+    }
+
+    res.status(404).json({ mensaje: 'Ruta no encontrada' })
+
 });
 
 /**

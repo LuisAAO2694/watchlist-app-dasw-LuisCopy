@@ -6,7 +6,7 @@ GET {{baseUrl}}/
 Authorization: Bearer {{token}}
 
 ### Obtener items filtrados por estado
-GET {{baseUrl}}/?estado=pendiente
+GET {{baseUrl}}/?estado=viendo&tipo=serie
 Authorization: Bearer {{token}}
 
 ### Obtener items filtrados por tipo
