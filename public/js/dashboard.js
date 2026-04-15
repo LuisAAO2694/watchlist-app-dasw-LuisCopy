@@ -132,12 +132,44 @@ const watchlist = [
 ];
 
 
-const obtenerData = ({ categoria, estado = null }) => {
-    return watchlist.filter(e => {
-        const categoriaMatch = categoria === 'todos' || e.tipo === categoria;
-        const estadoMatch = estado === 'todos' || !estado || e.estado === estado;
-        return categoriaMatch && estadoMatch;
-    });
+const obtenerData = async ({ categoria, estado = null }) => {
+    const token = localStorage.getItem('token') ?? (() => { throw new Error('No se logro obtener el token') });
+
+    console.log(token);
+
+
+    const cache = sessionStorage.getItem('token');
+
+
+    if (cache) {
+        const items = JSON.parse(cache);
+        console.log('Obtenidos del cache');
+        
+        return items;
+    }
+
+    try {
+
+        const response = await fetch('/api/watchlist', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        const data = await response.json();
+
+        console.log(data);
+
+        const { data: items } = data;
+
+
+        sessionStorage.setItem('token', JSON.stringify(items));
+
+        return items;
+    } catch (error) {
+
+    }
 }
 
 
@@ -240,9 +272,9 @@ const crearTarjeta = ({ id, userId, titulo,
     return tarjeta;
 }
 
-const renderizarContenido = ({ categoria, estado = null }) => {
+const renderizarContenido = async ({ categoria, estado = null }) => {
     const contenedorTarjetas = document.querySelector('.watchlist-grid');
-    const tarjetasData = obtenerData({ categoria, estado });
+    const tarjetasData = await obtenerData({ categoria, estado });
 
     contenedorTarjetas.innerHTML = '';
     tarjetasData.forEach(t => {
