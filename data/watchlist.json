@@ -1,7 +1,7 @@
 [
   {
     "id": 1774629703290,
-    "userId": 1774545626897,
+    "userId": 1774367204499,
     "titulo": "Inception",
     "tipo": "pelicula",
     "genero": "Ciencia Ficción",
@@ -14,7 +14,7 @@
   },
   {
     "id": 1774629703291,
-    "userId": 1774545626897,
+    "userId": 1774367204499,
     "titulo": "Breaking Bad",
     "tipo": "serie",
     "genero": "Drama",
@@ -27,7 +27,7 @@
   },
   {
     "id": 1774629703292,
-    "userId": 1774545626897,
+    "userId": 1774367204499,
     "titulo": "The Dark Knight",
     "tipo": "pelicula",
     "genero": "Acción",
@@ -40,7 +40,7 @@
   },
   {
     "id": 1774629703293,
-    "userId": 1774545626897,
+    "userId": 1774367204499,
     "titulo": "Stranger Things",
     "tipo": "serie",
     "genero": "Ciencia Ficción",
@@ -53,7 +53,7 @@
   },
   {
     "id": 1774629703294,
-    "userId": 1774545626897,
+    "userId": 1774367204499,
     "titulo": "Interstellar",
     "tipo": "pelicula",
     "genero": "Ciencia Ficción",
@@ -66,7 +66,7 @@
   },
   {
     "id": 1774629703295,
-    "userId": 1774545626897,
+    "userId": 1774367204499,
     "titulo": "The Office",
     "tipo": "serie",
     "genero": "Comedia",
@@ -79,7 +79,7 @@
   },
   {
     "id": 1742747723001,
-    "userId": 1774545626897,
+    "userId": 1774367204499,
     "titulo": "Inception",
     "tipo": "movie",
     "genero": "Sci-Fi",
@@ -92,7 +92,7 @@
   },
   {
     "id": 1742747723002,
-    "userId": 1774545626897,
+    "userId": 1774367204499,
     "titulo": "The Bear",
     "tipo": "serie",
     "genero": "Drama",
@@ -105,7 +105,7 @@
   },
   {
     "id": 1742747723003,
-    "userId": 1774545626897,
+    "userId": 1774367204499,
     "titulo": "Succession",
     "tipo": "serie",
     "genero": "Drama / Comedy",
@@ -118,7 +118,7 @@
   },
   {
     "id": 1742747723004,
-    "userId": 1774545626897,
+    "userId": 1774367204499,
     "titulo": "Blade Runner 2049",
     "tipo": "movie",
     "genero": "Cyberpunk",
