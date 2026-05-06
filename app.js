@@ -8,6 +8,11 @@ import { router as apiRouter } from "./src/routes/index.api.route.js"; // Import
 import { router as viewRouter } from "./src/routes/index.routes.js";
 import { logMiddleware } from "./src/middlewares/log.middleware.js";
 
+import envConfig from './src/config/env.loader.js';
+import database from "./src/db/db.js";
+import cookieParser from "cookie-parser";
+import rateLimit from "express-rate-limit";
+
 /**
  * 2. INSTANCIACIÓN Y MIDDLEWARES (Configuración)
  */
@@ -15,7 +20,11 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
+app.use(cookieParser());
 app.use(cors());
+
+database.conectar();
+
 
 /**
  * MIDDLEWARE PARA JSON: 
@@ -30,6 +39,23 @@ app.use(express.static('public'));
 // Middleware para logg
 app.use(logMiddleware);
 
+
+const limitadorGeneral = rateLimit({
+    windowMs: 1 * 600 * 1000,
+    max: 100,
+    message: 'Demasiadas solicitudes, intenta mas tarde'
+});
+
+
+const limitadorAutenticacion = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 5,
+    message: 'Demasiados intentos de autenticacion, intenta mas tarde'
+});
+
+app.use('/api/auth', limitadorAutenticacion);
+app.use(limitadorGeneral);
+
 /**
  * 3. DEFINICIÓN DE RUTAS
  */
@@ -43,7 +69,15 @@ app.use('/', viewRouter);
  * Es la respuesta que damos cuando alguien entra a la URL base (http://localhost:8080/).
  */
 app.get('/', (req, res) => {
-    res.status(200).json({ mensaje: 'Mi primera ruta con Express.js' });
+    const token = req.cookies.token; // Obtiene la cookie 'token'
+
+    if (token) {
+        // Si existe el token, redirige al dashboard
+        res.redirect('/dashboard');
+    } else {
+        // Si no existe el token, redirige a la página de ingreso
+        res.redirect('/auth/ingresar');
+    }
 });
 
 /**
@@ -81,8 +115,8 @@ app.use((err, req, res, next) => {
 /**
  * 5. PUESTA EN MARCHA
  */
-const PUERTO = 8080;
+const PORT = envConfig.PORT;
 
-app.listen(PUERTO, () => {
-    console.log(`Servidor corriendo en el puerto http://localhost:${PUERTO}.`);
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en ${PORT}.`);
 });
